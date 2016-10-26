@@ -1,0 +1,17 @@
+Implicit route model binding
+
+Route::get('users/{user}', function (App\User $user) {
+    return $user;
+});
+
+Explicit route model binding
+
+Route::get('users/{user}', function (App\User $user) {
+    return $user;
+});
+
+// RouteServiceProvider
+// Works off of the username
+\Route::bind('user', function ($username) {
+    return \App\User::where('username', $username)->firstOrFail();
+});
