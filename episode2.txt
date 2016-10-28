@@ -1,0 +1,6 @@
+Rate Limiting
+
+->middleware('throttle:3,2')
+
+Allows 3 requests every 2 minutes
+Passes 'X-RateLimit-Limit' and 'X-RateLimit-Remaining' to display maximum and available
