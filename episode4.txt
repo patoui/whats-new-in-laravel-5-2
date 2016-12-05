@@ -1,0 +1,30 @@
+// Accessible via ValidateRequests trait
+// Handles failed validation
+// Handles redirect
+$this->validate(
+    $request,
+    [
+        'email.*' => 'required|email'
+    ],
+    [
+        'email.*' => 'This is not a proper email address.'
+    ]
+);
+
+'attribute.*' syntax to validate all items in the array.
+In example:
+
+<input type="text" name="email[]" value="{{ old('email.0') }}">
+<input type="text" name="email[]" value="{{ old('email.1') }}">
+<input type="text" name="email[]" value="{{ old('email.2') }}">
+
+$request->all() = [
+    'email' => [
+        0 => 'email1@test.com',
+        1 => 'email2@test.com',
+        2 => 'email3@test.com',
+    ]
+];
+
+Validation with 'email.*' => 'required|email' will validate each email field above
+and check if they exist and are a valid email address

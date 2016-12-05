@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +16,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('/', 'InvitationsController@store');
 
 Route::get('users/{user}', function (App\User $user) {
     return $user;
